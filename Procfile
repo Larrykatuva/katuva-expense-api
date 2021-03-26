@@ -1,1 +1,1 @@
-web: gunicorn incomeexpenseapi.wsgi --log-file -
+web: gunicorn incomeexpensesapi.wsgi --log-file -
