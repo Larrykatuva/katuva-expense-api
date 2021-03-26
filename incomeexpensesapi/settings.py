@@ -146,7 +146,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'expensewebsite/static')]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'incomeexpensesapi/static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
