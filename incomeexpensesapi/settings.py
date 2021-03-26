@@ -17,7 +17,6 @@ from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -29,9 +28,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['katuva-expense-api.herokuapp.com', '127.0.0.1']
 
-
 AUTH_USER_MODEL = 'authentication.User'
-
 
 # Application definition
 
@@ -91,17 +88,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'incomeexpensesapi.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'django-api',
-            'USER': 'postgres',
-            'PASSWORD': '1234',
-            'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django-api',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
     }
 }
 
@@ -110,7 +106,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 100,
     'NON_FIELD_ERRORS_KEY': 'error',
     'DEFAULT_AUTHENTICATION_CLASSES': (
-            'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
@@ -118,7 +114,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=10),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1)
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -138,7 +133,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -152,23 +146,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-BASE_DR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DR, 'staticfiles')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'expensewebsite/static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DR, 'static'),
-)
-
 
 # Email setup
 EMAIL_HOST = 'smtp.gmail.com'  # os.environ.get('EMAIL_HOST')
-EMAIL_HOST_USER = 'testprojects.katuva@gmail.com'   # os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_USER = 'testprojects.katuva@gmail.com'  # os.environ.get('EMAIL_HOST_USER')
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'testprojects.katuva@gmail.com'  # os.environ.get('EMAIL_HOST_USER')
 EMAIL_PORT = 587
