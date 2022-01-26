@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import dj_database_url
 from pathlib import Path
 import os
 from datetime import timedelta
@@ -24,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'h(zi$vty136w+ow29-+@u1ox5pb8ijetc0dl^6+emi=c=xfsv^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['katuva-expense-api.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'authentication.User'
 
@@ -93,18 +94,17 @@ WSGI_APPLICATION = 'incomeexpensesapi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'django-api',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django-test-api',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost'
     }
 }
 
 # databse connection
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=600)
+# DATABASES['default'].update(db_from_env)
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
@@ -157,8 +157,10 @@ STATIC_URL = '/static/'
 
 # Email setup
 EMAIL_HOST = 'smtp.gmail.com'  # os.environ.get('EMAIL_HOST')
-EMAIL_HOST_USER = 'testprojects.katuva@gmail.com'  # os.environ.get('EMAIL_HOST_USER')
+# os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_USER = 'testprojects.katuva@gmail.com'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'testprojects.katuva@gmail.com'  # os.environ.get('EMAIL_HOST_USER')
+# os.environ.get('EMAIL_HOST_USER')
+DEFAULT_FROM_EMAIL = 'testprojects.katuva@gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_PASSWORD = 'Python@98!'  # os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = 'Kahawa@98!?'  # os.environ.get('EMAIL_HOST_PASSWORD')
